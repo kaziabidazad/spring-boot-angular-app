@@ -1,0 +1,17 @@
+server:
+  port: 4201
+management:
+  server:
+    port: 4201
+  endpoints:
+    enable-by-default: true
+    web:
+      base-path: /manage
+      exposure:
+        include: '*'
+        exclude: env,beans,loggers
+  endpoint:
+    shutdown:
+      enabled: true
+    info:
+      enabled: true

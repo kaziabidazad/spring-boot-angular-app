@@ -1,0 +1,26 @@
+<h2>Add a New witcher</h2>
+
+<form (ngSubmit)="saveWitcher()">
+    <div>
+        <label for="title">Name:</label>
+        <input type="text" id="title" [(ngModel)]="witcher.name" name="name" required>
+    </div>
+
+    <div>
+        <label for="school">School:</label>
+        <input type="text" id="school" [(ngModel)]="witcher.school" name="school" required>
+    </div>
+
+    <div>
+        <label for="location">Location:</label>
+        <input type="text" id="location" [(ngModel)]="witcher.location" name="location" required />
+    </div>
+
+    <div>
+        <label for="monsterKilled">Monster Killed:</label>
+        <input type="text" [(ngModel)]="witcher.monsterKilled" id="monsterKilled" name="monsterKilled" required>
+    </div>
+
+
+    <button type="submit">Save Witcher</button>
+</form>

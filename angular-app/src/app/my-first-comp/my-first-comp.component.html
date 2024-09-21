@@ -1,0 +1,50 @@
+<div class="form-container">
+    <h2>Simple Form</h2>
+    <!-- <form (ngSubmit)="onSubmit()" > -->
+    <form (keyup)="toggleSubmit()">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" [(ngModel)]="name" name="nameField" id="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" [(ngModel)]="email" name="emailField" id="email" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" rows="4" name="messageField" [(ngModel)]="message" required></textarea>
+        </div>
+        <button type="submit" (click)="onSubmit()">Submit</button>
+    </form>
+    <!-- <div *ngIf="isSubmitted">
+        <!-- <h5>Form Data(Showing 2 way data binding HTML <==> TS):</h5>
+        <p><strong>Name:</strong> {{name}} </p>
+        <p><strong>Email:</strong> {{email}} </p>
+        <p><strong>Message:</strong> {{message}} </p> -->
+    <!--
+        <table>
+            <thead>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+            </thead>
+            <tr *ngFor="let m of messages;let i = index">
+                <td> {{i+1}} </td>
+                <td> {{m.name}} </td>
+                <td> {{m.email}} </td>
+                <td> {{m.message}} </td>
+            </tr>
+        </table>
+    </div> -->
+    <div class="flex-container" *ngIf="isSubmitted">
+        <app-message-details
+         *ngFor="let msg of messages;let i = index;" 
+         [message]="msg" 
+         [msgId]="i" 
+         (delete)="deleteMessage($event)"
+         >
+
+        </app-message-details>
+    </div>
+</div>
