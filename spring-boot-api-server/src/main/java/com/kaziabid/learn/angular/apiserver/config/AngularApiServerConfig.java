@@ -25,6 +25,9 @@ import com.github.javafaker.service.RandomService;
 @EnableCaching
 public class AngularApiServerConfig {
 
+    /**
+     * A redis cache config to cache method calls
+     */
     @Bean
     public RedisCacheConfiguration cacheConfiguration() {
         return RedisCacheConfiguration
@@ -40,6 +43,11 @@ public class AngularApiServerConfig {
                 .withCacheConfiguration("dbCache", cacheConfiguration());
     }
 
+    /**
+     * Faker Bean to generate fake data for the api
+     * 
+     * @return
+     */
     @Bean
     public Faker faker() {
         return new Faker(
@@ -48,6 +56,11 @@ public class AngularApiServerConfig {
                 new RandomService(new SecureRandom()));
     }
 
+    /**
+     * Disabling CORS
+     * 
+     * @return
+     */
     @Bean
     public WebFluxConfigurer webFluxConfigurer() {
         return new WebFluxConfigurer() {
